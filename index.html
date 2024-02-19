@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>App per Note con Post-it</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="board">
+    <!-- Esempio di colonna
+    <div class="column" id="column1">
+        <input class="column-title" value="Colonna 1" onchange="updateColumnName(this, 'column1')">
+        <div class="postit" contenteditable="true">Clicca per editare</div>
+    </div> -->
+    <!-- Aggiungi colonna -->
+    <!-- <button id="addColumnBtn">+</button> -->
+</div>
+
+<div id="config-bar">
+    <input type="text" id="project-name" placeholder="Nome del Progetto">
+    <select id="font-select">
+        <option value="Arial">Arial</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <!-- Aggiungi altri font a tua scelta -->
+    </select>
+    <button id="font-size-decrease">-</button>
+    <input type="number" id="font-size-input" value="14" style="width: 40px;"> <!-- Aggiungi un input per visualizzare la dimensione attuale del font -->
+    <button id="font-size-increase">+</button>
+    <select id="font-weight">
+        <option value="normal">Normale</option>
+        <option value="bold">Grassetto</option>
+        <option value="italic">Corsivo</option>
+        <option value="underline">Sottolineato</option>
+    </select>
+    <input type="color" id="color-picker" value="#000000">
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

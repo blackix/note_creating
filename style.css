@@ -1,0 +1,147 @@
+#board {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
+}
+
+
+
+.postit {
+    width: 100%;
+    min-height: 50px;
+    min-width: 100px;
+    padding: 10px;
+    background-color: rgb(255, 217, 0.5);
+    border: 3px solid rgba(0, 0, 0, 0.127);
+    cursor: move;
+    resize: both;
+    overflow: auto;
+    max-width: 140px;
+    border-radius: 15px;
+}
+
+.column-title, .addPostitBtn {
+    display: block;
+    width: 80%;
+    padding: 5px;
+    margin: 0 0 10px 0;
+    text-align: center;
+    border: 3px solid rgba(0, 0, 0, 0.127);
+    border-radius: 15px;
+}
+
+/* Stile aggiornato per i bottoni di aggiunta */
+#addColumnBtn, .addPostitBtn {
+    width: 30px; /* Larghezza fissa */
+    height: 30px; /* Altezza fissa */
+    padding: 0;
+    margin: 0 30px 0px; /* Centra il bottone */
+    align-items: left;
+    text-align: center;
+    color: #838996;
+    background-color: #f0f0f000; /* Colore di sfondo */
+    border: 1px solid #ccc; /* Bordo */
+    border-radius: 15px; /* Rendi il bottone rotondo */
+    cursor: pointer;
+    line-height: 0px; /* Centra il testo verticalmente */
+    font-size: 24px; /* Dimensione del simbolo "+" */
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Assicura che gli elementi siano centrati */
+    gap: 20px;
+    width: 200px;
+    min-width: 200px;
+}
+
+/* Puoi aggiungere qui ulteriori stili */
+
+.postit-ocre {
+    background-color: #f5ca0d; /* Giallo ocra */
+}
+
+.postit-fucsia {
+    background-color: #ff00ff; /* Fucsia */
+}
+
+.postit-cielo {
+    background-color: #87ceeb; /* Blue cielo */
+}
+
+.postit-tortora {
+    background-color: #838996; /* Grigio tortora */
+}
+
+.postit-acido {
+    background-color: #b0bf1a; /* Verde acido */
+}
+
+
+
+/* Stili aggiuntivi per select e option se necessario */
+#config-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-around;
+    align-items: left;
+    border-radius: 15px;
+}
+
+
+#config-bar input[type="number"], #config-bar input[type="text"], #config-bar select, #config-bar button {
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    padding: 5px 12px;
+    outline: none; /* Rimuove l'outline */
+    font-size: 14px;
+}
+
+#config-bar button {
+    background-color: #007bff; /* Colore di sfondo blu */
+    color: white; /* Testo bianco */
+    cursor: pointer; /* Cambia il cursore in una mano per indicare che è cliccabile */
+    border: none;
+
+}
+
+#config-bar button:hover {
+    background-color: #0056b3; /* Colore di sfondo più scuro al passaggio del mouse */
+}
+
+/* Stile specifico per l'input del colore per mantenerne l'aspetto nativo */
+#config-bar input[type="color"] {
+    border-radius: 50%; /* Rende l'input del colore circolare */
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Opzionale: Stile per l'input della dimensione del font per renderlo meno invasivo */
+#font-size-input {
+    width: 50px; /* Fissa la larghezza dell'input della dimensione del font */
+    text-align: center; /* Centra il testo all'interno dell'input */
+    border: none;
+
+}
+
+
+.ui-resizable-handle {
+    background-color: #cccccc56;
+    width: 3px;
+    height: 100%;
+    right: -5px; /* Posiziona il handle un po' più esternamente se necessario */
+    border-radius: 15px;
+}
+
+.ui-resizable-e { /* Handle specifico sul lato est (destro) */
+    cursor: e-resize; /* Cambia il cursore per indicare il ridimensionamento */
+}
