@@ -145,3 +145,49 @@
 .ui-resizable-e { /* Handle specifico sul lato est (destro) */
     cursor: e-resize; /* Cambia il cursore per indicare il ridimensionamento */
 }
+
+.complete-task {
+    position: absolute;
+    bottom: 15px;
+    left: 25px;
+    cursor: pointer;
+}
+
+
+
+
+.postit {
+    width: 100%;
+    /* Altri stili per postit */
+}
+
+#completed-tasks {
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    width: 200px; /* o la larghezza desiderata */
+    height: 300px; /* o l'altezza desiderata */
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 10px;
+    overflow: hidden; /* Nasconde i post-it che escono dal deck */
+    z-index: 1000; /* Assicurati che sia visibile sopra gli altri elementi */
+}
+
+.postit-container {
+    position: absolute;
+    right: 10px; /* Leggermente spostato a destra per vedere l'effetto sovrapposto */
+    bottom: 60px; /* Inizia dal fondo del deck */
+    width: 180px; /* Leggermente più piccolo del deck per l'effetto sovrapposto */
+    transform: rotate(-1deg); /* Una leggera rotazione per l'effetto visivo */
+    z-index: 1; /* Base z-index, verrà aumentato dinamicamente */
+}
+
+#completed-tasks .postit-container {
+    position: absolute;
+    right: 0; /* Regola se necessario per l'allineamento */
+    bottom: 100; /* Incrementa questo valore dinamicamente per ogni post-it */
+    transform: rotate(-1deg); /* Una leggera rotazione per effetto visivo */
+    z-index: 1; /* Incrementa dinamicamente per ogni post-it aggiunto */
+}

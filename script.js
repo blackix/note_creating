@@ -23,6 +23,8 @@ $(function() {
     
         // Crea un post-it iniziale nella nuova colonna
         addPostit(column, colorClass);
+      //  makeColumnSortable();
+
     
         // Rendi la colonna ridimensionabile
         column.resizable({
@@ -39,14 +41,29 @@ $(function() {
             addPostit($(this).parent(), colorClass);
         }
     });
-
-    function addPostit(column, colorClass, focus = true) {
-        const postit = $(`<textarea class="postit ${colorClass}"></textarea>`);
-        postit.appendTo(column);
-        if (focus) {
-            postit.focus();
-        }
+function addPostit(column, colorClass, focus = true) {
+    const postitContainer = $('<div class="postit-container"></div>');
+    const postit = $(`<textarea class="postit ${colorClass}"></textarea>`);
+    const completeIcon = $('<span class="complete-task">&#10003;</span>'); // Usa un carattere come icona di esempio
+    
+    postit.appendTo(postitContainer);
+    completeIcon.appendTo(postitContainer); // Aggiungi l'icona al contenitore del post-it
+    postitContainer.appendTo(column);
+    
+    if (focus) {
+        postit.focus();
     }
+// Dopo l'aggiunta di una nuova colonna o post-it
+makeColumnSortable();
+
+    // Gestisci il click sull'icona di completamento
+    completeIcon.click(function() {
+        const completedDeck = $("#completed-tasks");
+        postitContainer.detach().appendTo(completedDeck); // Sposta il contenitore del post-it nel deck dei completati
+    });
+}
+
+
     $(document).on('focus', '.postit', function() {
         lastFocusedPostit = this; // Aggiorna l'ultimo post-it focalizzato
     });
@@ -121,4 +138,35 @@ $(document).ready(function() {
         // Ad esempio, modificare il titolo della pagina
         document.title = $(this).val();
     });
+});
+
+function makeColumnSortable() {
+    $(".column").sortable({
+        items: ".postit", // Specifica quali elementi possono essere ordinati
+        cancel: ".fixed", // Esclude eventuali elementi che non vuoi siano trascinabili
+        placeholder: "postit-placeholder", // Classe CSS per lo spazio riservato durante il trascinamento
+        containment: "parent", // Limita il trascinamento all'interno del genitore
+        axis: "y", // Limita il trascinamento verticalmente
+        update: function(event, ui) {
+            // Opzionale: callback eseguito dopo che l'ordine degli elementi è cambiato
+        }
+    });
+}
+
+// Chiama questa funzione ogni volta che aggiungi una nuova colonna o un nuovo post-it
+
+$('.complete-task').click(function() {
+    const completedDeck = $("#completed-tasks");
+    const postitContainer = $(this).closest('.postit-container');
+    
+    // Calcola il nuovo z-index basato sul numero di post-it nel deck
+    const newIndex = completedDeck.children().length + 1;
+    
+    postitContainer.css({
+        'z-index': newIndex, // Imposta lo z-index per mantenere l'ordine di sovrapposizione
+        'right': 10 + newIndex * 5 + 'px', // Sposta leggermente a destra per l'effetto sovrapposto
+        'bottom': 10 + newIndex * 2 + 'px' // Sposta leggermente verso l'alto per l'effetto sovrapposto
+    });
+    
+    completedDeck.append(postitContainer); // Sposta il post-it nel deck dei completati
 });
